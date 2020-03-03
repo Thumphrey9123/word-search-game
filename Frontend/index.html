@@ -26,8 +26,53 @@
                         <li class="sideLi">Rules</li>
                     </ul>
                 </div>
+
                 <div class="verticalContent" id="renderDisplay">
+                    
+                   <div id="difficulty">
+                        <h2>&nbsp;Choose Difficulty</h2>
+
+                        <div style="display: flex;">
+                        <form id="difficultySetting">
+                                <input type="radio" name="difficulty" value="easy" checked>
+                                <label for="easy">Easy</label>
+                                <input type="radio" name="difficulty" value="medium">
+                                <label for="medium">Medium</label>
+                                <input type="radio" name="difficulty" value="hard">
+                                <label for="hard">Hard</label>
+                        </form>
+                        </div>
+                        <br>
+                        <h2>&nbsp;Set Timer</h2>
+                        <div style="display: flex;">
+                        <form id="timer">
+                            <input type="radio" name="timer" value="10m">
+                            <label for="10m">10 Min</label>
+                            <input type="radio" name="timer" value="20m">
+                            <label for="20m">20 Min</label>
+                            <input type="radio" name="timer" value="30m" checked>
+                            <label for="30m">30 Min</label>
+                        </form>
+                        </div>
+                        <br>
+                        <button id="submitConfig"> Start Game </button>
+
+                        <p id="configDesc"><h3>Configuration Description:</h3> <br>
+                            <li id="displaySize"><strong>Grid Size:</strong> 13x13 (169 Elements)</li>
+                            <li id="displayTimer"> <strong>Timer:</strong> 30 Minutes</li>
+                            <li id="displayWords"><strong>Word List Length:</strong> 6 Words</li>
+                            <br>
+                            <li id="editDistanceCheck">Words Will Be <strong>Especially Distinct</strong> From Each Other</li>
+                            <li id="minLengthDisplay">Each Word Will Be <strong>3-6 Characters</strong> Long</li>
+                            <li id="dataSetLength">Words Pulled From: <strong>Easy</strong> Dataset of <strong>896</strong> words</li>
+                        </p>
+                    </div>
+                    
+
+
+                    </div>
                 </div>
+
             </div>
                 
 

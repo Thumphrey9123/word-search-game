@@ -61,12 +61,13 @@ function transitionToGrid(gridType){ //Call this method, with it's arguement, a 
     renderDisplay.parentNode.appendChild(highScoresRightDisplay)
 
     renderDisplay.appendChild(gridMainContent)
+    
     populate(gridType)
 }
 
 function populate(gridType){ //Populates grid & adds click support. Note: GRID MUST BE CREATED PRIOR TO CALLING
     let n = undefined //Takes "easy", "medium", "hard" as arguements
-
+    
     switch(gridType){
         case "easy":
             n = 13
@@ -87,12 +88,17 @@ function populate(gridType){ //Populates grid & adds click support. Note: GRID M
     let grid = [...Array(n)].map(e => Array(n).fill(0))
     let letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     //letters = letters.map(e => e = "E")
+
+
     for(let i = 0; grid.length > i; i++){
         for(let j = 0; grid[0].length > j; j++){
             let newEle = document.createElement("div")
             grid[i][j] = letters[Math.floor(Math.random() * 26)]
             newEle.setAttribute("class", "element")
             newEle.innerText = grid[i][j]
+            if(i == 1 && j == 1){
+                newEle.innerText = "A"
+            }
             newEle.id = `${i}_${j}`
             document.querySelector(`#${gridType}-grid`).appendChild(newEle)
         }
@@ -199,3 +205,57 @@ function loadContentWindowFunctions(){
     })
 }
 //* GRID FUNCTIONS END HERE
+
+// SETTINGS WINDOW FUNCTIONS 
+
+
+function loadSettingsWindowFunctions() {
+    document.querySelector("#timer").addEventListener("change", function(e){
+        updateTimer(e.target.value)
+    })
+
+    document.querySelector("#difficultySetting").addEventListener("change", function(e){
+        updateDifficulty(e.target.value)
+    })
+}
+
+function updateTimer(newTimer){
+    console.log(newTimer)
+    document.querySelector("#displayTimer").innerHTML = `<strong>Timer:</strong> ${newTimer.match(/\d+/)} Minutes`
+}
+
+function updateDifficulty(newDifficulty){
+    
+    switch(newDifficulty){
+        case 'easy':
+            document.querySelector("#displaySize").innerHTML = `<strong>Grid Size:</strong> 13x13 (169 Elements)`
+            document.querySelector("#displayWords").innerHTML = `<strong>Word List Length:</strong> 6 Words`
+
+            document.querySelector("#editDistanceCheck").innerHTML = `Words Will Be <strong>Especially Distinct</strong> From Each Other`
+            document.querySelector("#minLengthDisplay").innerHTML = `Each Word Will Be <strong>3-6 Characters</strong> Long`
+            document.querySelector("#dataSetLength").innerHTML = `Words Pulled From: <strong>Easy</strong> Dataset of <strong>${easyWords.length}</strong> words`
+        break;
+
+        case 'medium':
+            document.querySelector("#displaySize").innerHTML = `<strong>Grid Size:</strong> 16x16 (256 Elements)`
+            document.querySelector("#displayWords").innerHTML = `<strong>Word List Length:</strong> 8 Words`
+
+            document.querySelector("#editDistanceCheck").innerHTML = `Words Will Be <strong>Atleast Slightly Distinct</strong> From Each Other`
+            document.querySelector("#minLengthDisplay").innerHTML = `Each Word Will Be <strong>5-8 Characters</strong> Long`
+            document.querySelector("#dataSetLength").innerHTML = `Words Pulled From: <strong>Medium</strong> Dataset of <strong>${mediumWords.length}</strong> words`
+        break;
+
+        case 'hard':
+            document.querySelector("#displaySize").innerHTML = `<strong>Grid Size:</strong> 20x20 (400 Elements)`
+            document.querySelector("#displayWords").innerHTML = `<strong>Word List Length:</strong> 10 Words`
+
+            document.querySelector("#editDistanceCheck").innerHTML = `Words Will Have <strong>No Distinction Check</strong>`
+            document.querySelector("#minLengthDisplay").innerHTML = `Each Word Will Be <strong>8+ Characters</strong> Long`
+            document.querySelector("#dataSetLength").innerHTML = `Words Pulled From: <strong>Hard</strong> Dataset of <strong>${hardWords.length}</strong> words`
+        break;
+    }
+
+    //document.querySelector("#displayWords").innerHTML = `<strong>Word List Length: </strong> x `
+}
+
+// SETTINGS WINDOW FUNCTIONS END HERE

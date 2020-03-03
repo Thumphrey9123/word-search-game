@@ -207,6 +207,31 @@ h3{
     background-color: lightcoral;
 }
 
+#configDesc{
+    border: lightslategray;
+    border-width: 2px;
+    border-style: solid;
+    
+}
+
+#difficulty{
+    background-color: lightsteelblue;
+    border-color: grey;
+    border-width: 5px;
+    border-style: solid;
+    margin: 50px;
+    font-size: 150%;
+}
+
+#submitConfig{
+    display: block; 
+    margin: 0 auto;
+    padding: 15px 32px;
+    background-color: green;
+    color: white;
+    font-size: 18px;
+}
+
 
 /* theme
 #eafffa
